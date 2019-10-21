@@ -14,7 +14,7 @@ pipeline {
    
      }
    }
-// }
+ }
   // stage('Push image') {
      
    

@@ -7,7 +7,7 @@ pipeline {
        }
   
    stage('Push image') {
-     docker.withRegistry('https://us.gcr.io', 'gcrproject-256203]') {
+     docker.withRegistry('https://eu.gcr.io', 'gcrproject-256203]') {
      app.push("${env.BUILD_NUMBER}")
      app.push("latest")
      }

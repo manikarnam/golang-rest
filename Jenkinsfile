@@ -3,6 +3,7 @@ pipeline {
 
       stages {
         stage('Build image') {
+          scripts{
          app = docker.build("[gcrproject-256203]/[golang-pipeline]")
        }
   
@@ -13,4 +14,5 @@ pipeline {
      }
    }
  }
+}
 }

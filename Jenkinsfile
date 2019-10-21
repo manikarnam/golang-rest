@@ -2,8 +2,8 @@ pipeline {
     agent { label 'slave_node' }
 
       stages {
-         scripts{
           stage('Build image') {
+              steps{
            app = docker.build("[gcrproject-256203]/[golang-pipeline]")
        }
   

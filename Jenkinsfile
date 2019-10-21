@@ -7,7 +7,7 @@ pipeline {
        }
   
    stage('Push image') {
-     docker.withRegistry('golaang@gcrproject-256203.iam.gserviceaccount.com', 'gcrproject-256203]') {
+     docker.withRegistry('gcrproject-256203', 'golaang@gcrproject-256203.iam.gserviceaccount.com]') {
      app.push("${env.BUILD_NUMBER}")
      app.push("latest")
      }

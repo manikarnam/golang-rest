@@ -3,11 +3,11 @@ pipeline {
 
       stages {
         stage('Build image') {
-         app = docker.build("[golaang@gcrproject-256203.iam.gserviceaccount.com]/[golang-pipeline]")
+         app = docker.build("[gcrproject-256203]/[golang-pipeline]")
        }
   
    stage('Push image') {
-     docker.withRegistry('https://eu.gcr.io', 'gcrproject-256203]') {
+     docker.withRegistry('golaang@gcrproject-256203.iam.gserviceaccount.com', 'gcrproject-256203]') {
      app.push("${env.BUILD_NUMBER}")
      app.push("latest")
      }

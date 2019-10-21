@@ -3,7 +3,8 @@ pipeline {
 
       stages {
           stage('Build image') {
-            // scripts{
+            scripts{
+                checkout scm
                  docker.withRegistry('https://us.gcr.io', 'gcr:golaang@gcrproject-256203.iam.gserviceaccount.com]') {
                  def app = docker.build("[gcrproject-256203]/[golang-pipeline]")
                    app.push("${env.BUILD_NUMBER}")

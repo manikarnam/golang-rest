@@ -5,7 +5,8 @@ pipeline {
           stage('Build image') {
              steps{
               def app = docker.build("[gcrproject-256203/golang-pipeline]")
-       }
+             }
+          }
   
    stage('Push image') {
      docker.withRegistry('gcrproject-256203', 'golaang@gcrproject-256203.iam.gserviceaccount.com]') {
@@ -15,4 +16,4 @@ pipeline {
    }
  }
 }
-}
+

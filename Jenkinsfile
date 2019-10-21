@@ -13,5 +13,5 @@ pipeline {
      app.push("latest")
      }
    }
- 
+}
 

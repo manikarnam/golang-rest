@@ -4,7 +4,8 @@ pipeline {
       stages {
         stage('Build image') {
          app = docker.build("[gcrproject-256203]/[golang-pipeline]")
-     }
+       }
+      }
   
    stage('Push image') {
      docker.withRegistry('https://us.gcr.io', 'gcrproject-256203]') {
@@ -12,5 +13,5 @@ pipeline {
      app.push("latest")
      }
    }
- }
+ 
 

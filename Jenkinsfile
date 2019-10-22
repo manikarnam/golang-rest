@@ -2,7 +2,7 @@ pipeline {
     agent { label 'slave_node' }
 
       stages {
-         stage('Build image' & 'push image') {
+         stage('Build image& push image') {
              
               docker.withRegistry('https://us.gcr.io', 'gcr:gcrproject') {
              def myContainer = docker.build("[gcrproject-256203]/[golang12]")

@@ -9,7 +9,7 @@ pipeline {
 
                   docker.withRegistry('https://us.gcr.io','gcr:gcrproject-256203')  {
 
-                  def app = docker.build("[gcrproject-256203]/[golang345]") {
+                  def app = docker.build("[gcrproject-256203]/[golang345]") 
                       app.push()
                    
                     }  
@@ -18,4 +18,4 @@ pipeline {
              }
          }
       }
-}
+

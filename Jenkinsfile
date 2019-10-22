@@ -3,7 +3,7 @@ pipeline {
 
       stages {
          stage('Build image') {
-            myContainer = docker.build("[gcrproject-256203]/[golang12]")
+           def myContainer = docker.build("[gcrproject-256203]/[golang12]")
             }
        stage('Push images') {
         docker.withRegistry('https://us.gcr.io', 'gcr:google-container-registry-project') {

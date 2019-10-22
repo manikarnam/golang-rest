@@ -4,7 +4,7 @@ pipeline {
       stages {
          stage ('Build'){
              steps {
-                 //script{
+                 script{
                   checkout scm
 
                   docker.withRegistry('https://us.gcr.io','gcr:gcrproject-256203')  {
@@ -18,4 +18,4 @@ pipeline {
              }
          }
       }
-//}
+}

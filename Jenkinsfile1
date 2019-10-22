@@ -1,18 +1,13 @@
 pipeline {
     agent { label 'slave_node' }
-  stages {
-        stage("Fetch repository") {
-            steps {
-                    git 'https://github.com/manikarnam/golang-rest.git'
-                }
-            }
-     stage('Build image') {
-        app = docker.build("[gcrproject-256203]/[golangpipeline]")
+    def app
+      stages {
+        stage('Build image') {
+        app = docker.build("gcrproject-256203/golang123:${env.BUILD_NUMBER}")
      }
     stage('Push image') {
-   docker.withRegistry('https://eu.gcr.io', 'gcr:[9ed113a1f5a5985b7643cab16c481e2abfc593f5]') {
-    app.push("${env.BUILD_NUMBER}")
-    app.push("latest")
+   docker.withRegistry('https://us.gcr.io','gcr:gcrproject-256203') {
+    app.push()
       }
     }
   }

@@ -4,10 +4,11 @@ pipeline {
       stages {
          stage('Build image') {
              steps {
+              def image = docker.build("[gcrproject-256203]/[golang12]")
               docker.withRegistry('https://us.gcr.io', 'gcr:gcrproject') {
-             def myContainer = docker.build("[gcrproject-256203]/[golang12]")
-            myContainer.push("${env.BUILD_NUMBER}")
-            myContainer.push("latest")
+           
+                image.push("${env.BUILD_NUMBER}")
+                image.push("latest")
             }
           }
         }

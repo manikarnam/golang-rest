@@ -3,13 +3,13 @@ pipeline {
 
       stages {
          stage('Build image') {
-              def app = docker.build("[gcrproject-256203]/[golang12]")
+            myContainer = docker.build("[gcrproject-256203]/[golang12]")
             }
-        stage('Push image') {
-           docker.withRegistry('https://eu.gcr.io', 'gcr:[gcrproject-256203]') {
-         //  app.push("${env.BUILD_NUMBER}")
-           app.push("latest")
+       stage('Push images') {
+        docker.withRegistry('https://us.gcr.io', 'gcr:google-container-registry-project') {
+            myContainer.push("${env.BUILD_NUMBER}")
+            myContainer.push("latest")
         }
-     }
-   }
+       }
+      }
 }

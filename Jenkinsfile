@@ -1,18 +1,13 @@
 pipeline {
     agent { label 'slave_node' }
 
-      stages {
-         stage('Build image') {
-             steps {
-                 parallel {
-                 docker.withRegistry('https://us.gcr.io', 'gcr:gcrproject') {
-                   def image = docker.build("[gcrproject-256203]/[golang12]")
-                      image.push("${env.BUILD_NUMBER}")
-                      image.push("latest")
-           
-                
-            }
-          }
-        }
-      }
-      }}
+     stage('Build image') {
+        app = docker.build("[gcrproject-256203]/[golangpipeline]")
+     }
+    stage('Push image') {
+   docker.withRegistry('https://eu.gcr.io', 'gcr:[9ed113a1f5a5985b7643cab16c481e2abfc593f5]') {
+    app.push("${env.BUILD_NUMBER}")
+    app.push("latest")
+  }
+}
+}

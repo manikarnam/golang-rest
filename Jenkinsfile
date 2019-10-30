@@ -7,9 +7,9 @@ pipeline {
                  script{
                   checkout scm
 
-                  docker.withRegistry('https://us.gcr.io','gcr:gcrproject-256203')  {
+                  docker.withRegistry('https://us.gcr.io','gcr:gcrproject-257509')  {
 
-                  def app = docker.build('gcrproject-256203/golang-declarativepipeline') 
+                  def app = docker.build('gcrproject-257509/golang-declarativepipeline') 
                       app.push()
                    
                     }  

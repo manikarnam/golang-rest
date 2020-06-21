@@ -7,15 +7,15 @@ pipeline{
     stages{
         stage("Build Image"){
             steps{
-                sh "docker build . -t maniengg/golang:${DOCKER_TAG}"
+                sh "sudo docker build . -t maniengg/golang:${DOCKER_TAG}"
             }
             
         }
         stage('dockerHub & push'){
             steps{
                 withCredentials([string(credentialsId: '', variable: 'dockerhub')]) {
-                sh "docker login -u maniengg -p ${dockerhub}"
-                sh "docker push maniengg/golang:${DOCKER_TAG}"
+                sh "sudo docker login -u maniengg -p ${dockerhub}"
+                sh "sudo docker push maniengg/golang:${DOCKER_TAG}"
              }
          }
       }

@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nodeapp
+  name: golang-app
   labels:
-    app: nodeapp
+    app: golang-app
 spec:
   containers:
-    - name: nodeapp
-      image: kammana/nodeapp:tagVersion
+    - name: golang-app
+      image: maniengg/golang-rest:tagVersion
       ports:
-        - containerPort: 8080
+        - containerPort: 8093

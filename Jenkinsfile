@@ -19,9 +19,26 @@ pipeline{
              }
          }
       }
+        /*stage('Deploy to k8s'){
+	       steps{
+		      sh "chmod +x changeTag.sh"
+			  sh "./changeTag.sh ${DOCKER_TAG}"
+			  sshagent(['kops-machine']){
+			  sh "scp -o StrictHostKeyChecking=no service.yml node-app-pod.yml ubuntu@52.66.70.61:/ubuntu/"
+			  script{
+			   try{
+			     sh "ssh ubuntu@52.62.1.7 kubectl appy -f ."
+				 catch (error){
+				 sh "ssh ubuntu@52.62.1.7 kubectl create -f ."
+                 }
+              }
+           }
+        }
+      }
+     }  */
     }
     
-}
+ }
     
     def getDockerTag(){
         def tag= sh script: 'git rev-parse HEAD', returnStdout: true

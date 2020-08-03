@@ -13,7 +13,7 @@ pipeline{
         }
         stage('dockerHub & push'){
             steps{
-               withCredentials([string(credentialsId:'docker-hub', variable:'dockerHubPwd')]) {
+               withCredentials([string(credentialsId:'docker-hub1', variable:'dockerHubPwd')]) {
                 sh "sudo docker login -u maniengg -p ${dockerHubPwd}"
                 sh "sudo docker push maniengg/golang:${DOCKER_TAG}"
              }

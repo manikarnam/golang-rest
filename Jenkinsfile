@@ -19,17 +19,17 @@ pipeline{
              }
          }
       }
-        /*stage('Deploy to k8s'){
+        stage('Deploy to k8s'){
 	       steps{
 		      sh "chmod +x changeTag.sh"
 			  sh "./changeTag.sh ${DOCKER_TAG}"
 			  sshagent(['kops-machine']){
-			  sh "scp -o StrictHostKeyChecking=no service.yml node-app-pod.yml ubuntu@52.66.70.61:/ubuntu/"
+			  sh "scp -o StrictHostKeyChecking=no service.yml node-app-pod.yml cloud_user@mss2k8master1.eastus.cloudapp.azure.com:/home/cloud_user"
 			  script{
 			   try{
-			       sh "ssh ubuntu@52.62.1.7 kubectl appy -f ."
+			       sh "ssh cloud_user@mss2k8master1.eastus.cloudapp.azure.com kubectl appy -f ."
 			     catch (error){
-		                sh "ssh ubuntu@52.62.1.7 kubectl create -f ."
+		                sh "ssh cloud_user@mss2k8master1.eastus.cloudapp.azure.com kubectl create -f ."
                  }
               }
            }
